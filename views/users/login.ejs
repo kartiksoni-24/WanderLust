@@ -1,0 +1,32 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="col-md-6 offset-md-3">
+            <h2 class="show-head mt-3" style="text-align: center;" id="head">Login</h2>
+            <hr>
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+                <div class="form-floating mt-5 mb-3">
+                    <input type="text" class="form-control text" name="username" id="floatingInput" placeholder="name"
+                        required>
+                    <label for="floatingInput">Username</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter username!
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control text" name="password" id="floatingPassword"
+                        placeholder="Password" required>
+                    <label for="floatingPassword">Password</label>
+                    <div class="invalid-feedback">
+                        Please enter your password!
+                    </div>
+                </div>
+                <h5 class="mb-5">Don't have an account? <a href="/signup">SignUp</a></h5>
+                <button class="btn btn-outline-info edit-btn mb-5">Login</button>
+                <a href="/auth/google" class="btn btn-outline-info edit-btn mb-5">Continue with Google</a>
+            </form>
+        </div>
+    </body>
