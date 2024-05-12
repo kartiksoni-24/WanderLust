@@ -22,6 +22,30 @@ module.exports.createListing = async (req, res, next) => {
   res.redirect("/listings");
 };
 
+module.exports.addImages = async (req, res) => {
+  let { id } = req.params;
+  let uploadedFiles = req.files;
+
+  let listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash("error", "Listing does not exist!");
+    res.redirect("/listings");
+  }
+
+  const newImages = uploadedFiles.map((file) => {
+    return {
+      url: file.path,
+      filename: file.filename,
+    };
+  });
+
+  listing.image = listing.image.concat(newImages);
+  await listing.save();
+
+  req.flash("success", "New Images added");
+  res.redirect(`/listings/${id}`);
+};
+
 module.exports.showListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findById(id)
@@ -65,11 +89,22 @@ module.exports.showListing = async (req, res) => {
     throw err;
   }
 
-  let now = new Date();
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
+  let now1 = new Date();
+  // let hours = 8;
+  let hours = now1.getHours();
+  const now = new Date();
+  const options = {
+    timeZone: "Asia/Kolkata", // India Standard Time
+    hour12: true, // 24-hour format
+    hour: "2-digit",
+    minute: "2-digit",
+    // second: "2-digit",
+  };
 
-  res.render("listings/show.ejs", { listing, result, hours, minutes });
+  const istTime = now.toLocaleString("en-US", options);
+  // console.log(istTime);
+
+  res.render("listings/show.ejs", { listing, result, hours, istTime });
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -79,7 +114,7 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing does not exist!");
     res.redirect(`/listings/${id}`);
   }
-  let originalImgUrl = listing.image.url;
+  let originalImgUrl = listing.image[0].url;
   originalImgUrl = originalImgUrl.replace("/upload", "/upload/w_250,h_250");
   res.render("listings/edit.ejs", { listing, originalImgUrl });
 };
@@ -105,6 +140,33 @@ module.exports.deleteListing = async (req, res) => {
   res.redirect("/listings");
 };
 
+module.exports.deleteImages = async (req, res) => {
+  let { id, imageId } = req.params;
+
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash("error", "Listing does not exist!");
+    res.redirect("/listings");
+  }
+
+  const imageIndex = listing.image.findIndex(
+    (img) => img._id.toString() === imageId
+  );
+  if (imageIndex === -1) {
+    req.flash("error", "Image not exist");
+    res.redirect(`/listings/${id}`);
+  }
+
+  // Remove the image from the listing
+  listing.image.splice(imageIndex, 1);
+
+  // Save the updated listing
+  await listing.save();
+
+  req.flash("success", "Image removed successfully");
+  res.redirect(`/listings/${id}`);
+};
+
 module.exports.category = async (req, res) => {
   let { id } = req.params;
   let listings = await Listing.find({ category: { $all: [id] } });
@@ -115,6 +177,28 @@ module.exports.category = async (req, res) => {
   } else {
     req.flash("error", `There is no Listing exist with "${id}" category`);
     res.redirect("/listings");
+  }
+};
+
+module.exports.search = async (req, res, next) => {
+  try {
+    let query = req.query.searchQuery;
+    // console.log(query);
+    // Check if query is null or undefined
+    if (!query) {
+      req.flash("error", "Something went wrong!");
+      res.redirect("/listings");
+    }
+
+    const listings = await Listing.find({ $text: { $search: query } });
+    if (listings.length === 0) {
+      req.flash("error", "No match found!!!");
+      res.redirect("/listings");
+    }
+
+    res.render("listings/index.ejs", { listings });
+  } catch (err) {
+    next(err);
   }
 };
 

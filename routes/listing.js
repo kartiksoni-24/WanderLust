@@ -19,8 +19,27 @@ router
     wrapAsync(listingController.createListing)
   );
 
+router.get("/search", wrapAsync(listingController.search));
+
 // new get
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+
+// add more images
+router.post(
+  "/:id/addImage",
+  isLoggedIn,
+  isOwner,
+  upload.array("listing[image]", 5),
+  wrapAsync(listingController.addImages)
+);
+
+// delete images
+router.delete(
+  "/:id/addImage/:imageId",
+  isLoggedIn,
+  isOwner,
+  wrapAsync(listingController.deleteImages)
+);
 
 // category route
 router.get("/category/:id", listingController.category);

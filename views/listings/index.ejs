@@ -1,6 +1,11 @@
 <% layout("/layouts/boilerplate") %>
 
     <body>
+        <form action="/listings/search" method="get" id="searchForm" class="mt-4">
+            <input type="text" class="search-field p-2 ps-4" name="searchQuery" id="searchQuery"
+                placeholder="Search by title, location, or country">
+            <button type="submit" class="search-btn p-2 ms-1"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
         <div class="head-div mt-4 row" id="head">
             <div class="categories-container col-md-8">
                 <button class="arrow-btn left-btn me-3"><i class="fa-solid fa-angle-left"></i></button>
@@ -97,7 +102,7 @@
             <% for (let listing of listings) {%>
                 <div class="card index-card mt-3 mb-3 show-content" style="width: 25rem; ">
                     <a href="/listings/<%= listing._id %>" style="text-decoration: none;">
-                        <figure class="rounded"><img src="<%= listing.image.url %>" class="card-img-top rounded"
+                        <figure class="rounded"><img src="<%= listing.image[0].url %>" class="card-img-top rounded"
                                 alt="Listing image">
                         </figure>
 

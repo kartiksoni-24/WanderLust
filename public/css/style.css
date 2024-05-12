@@ -73,7 +73,8 @@ body::-webkit-scrollbar {
   filter: drop-shadow(1.5px 1.5px #000000);
 }
 
-.hide-options {
+.hide-options,
+.hide-explore {
   display: none !important;
 }
 
@@ -92,6 +93,26 @@ body::-webkit-scrollbar {
 .nav-drop li {
   padding: 0.5rem;
   font-size: 18px;
+}
+
+.search-field {
+  width: 18rem;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+}
+
+.search-btn {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: none;
+  width: 3rem;
+  background-color: #ff003c;
+  color: white;
+}
+
+#searchForm {
+  display: none;
 }
 
 /* .navbar-options-container {
@@ -349,6 +370,69 @@ textarea {
   font-size: 20px !important;
 }
 
+/* -------------------images options------------------------ */
+.add-photos-box {
+  display: inline-block;
+  border: 2px dashed #ccc;
+  background-color: #fafafa;
+  padding: 30px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.add-photos-box input[type="file"] {
+  display: none;
+}
+
+.add-photos-box label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* ------------------------------show images----------------------------------- */
+.more-img-div {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  /* height: 20rem; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  scrollbar-width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #979797;
+}
+
+.more-img {
+  border-radius: 20px;
+  /* width: 25rem; */
+  height: 15rem;
+  border: 2px solid black;
+}
+
+.img-delete {
+  padding: 0.5rem;
+  position: relative;
+  right: 2.5rem;
+  border: none;
+  background-color: transparent;
+}
+
 /* review */
 .option-div {
   display: flex !important;
@@ -518,6 +602,10 @@ textarea {
   border-radius: 10px;
   box-shadow: 0 0 10px black;
   /* margin: 0 1rem; */
+  background-image: url(https://static.vecteezy.com/system/resources/previews/006/852/804/non_2x/abstract-blue-background-simple-design-for-your-website-free-vector.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 
 .owner-profile {
@@ -617,6 +705,9 @@ textarea {
   box-shadow: 0 0 5px black;
   /* height: 60%; */
   width: 100%;
+  background-image: url(https://t4.ftcdn.net/jpg/04/61/23/23/360_F_461232389_XCYvca9n9P437nm3FrCsEIapG4SrhufP.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .weather-top {
@@ -667,8 +758,26 @@ textarea {
 }
 
 @media (width < 768px) {
-  .navbar {
-    height: auto;
+  .hide-title {
+    display: none;
+  }
+
+  #searchFormNav {
+    display: none;
+  }
+
+  #searchForm {
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-field {
+    background-color: #ecebeb;
+  }
+
+  .hide-explore {
+    display: block !important;
+    font-size: 22px !important;
   }
 
   .nav-link {

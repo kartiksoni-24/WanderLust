@@ -3,9 +3,11 @@ function showPop() {
   let div = document.querySelector(".delete-pop");
   let body = document.querySelector("body");
   document.querySelector("#editId").classList.add("disabled");
+  document.querySelector("#addId").classList.add("disabled");
   let del = document.querySelector("#deleteId");
   document.querySelector("#submitId").disabled = true;
   document.querySelector("#afterPop").disabled = true;
+  document.querySelector("#files").disabled = true;
   // document.querySelector(".afterPopRange").disabled = true;
   // let container = document.querySelector(".container");
 
@@ -21,8 +23,10 @@ function hidePop() {
   document.querySelector("#deleteId").disabled = false;
   document.querySelector("#submitId").disabled = false;
   document.querySelector("#afterPop").disabled = false;
+  document.querySelector("#files").disabled = false;
   // document.querySelector(".afterPopRange").disabled = false;
   document.querySelector("#editId").classList.remove("disabled");
+  document.querySelector("#addId").classList.remove("disabled");
   // let container = document.querySelector(".container");
 
   div.classList.add("hidden");
@@ -195,3 +199,18 @@ btn.addEventListener("click", () => {
     }
   }
 });
+
+// --------------------------more images----------------------------
+function updateLabel(input) {
+  const label = document.getElementById("file-label");
+  const numFiles = input.files.length;
+
+  if (numFiles === 0) {
+    label.textContent = "Add Photos";
+  } else if (numFiles > 5) {
+    label.textContent = "You can only select up to 5 photos";
+    input.value = ""; // Clear file selection if exceeding limit
+  } else {
+    label.innerHTML = `${numFiles} photos selected &nbsp;<i class="fa-solid fa-circle-check" style="color: #0091ff;"></i>`;
+  }
+}

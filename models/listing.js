@@ -10,10 +10,12 @@ const listingSchema = new Schema({
   description: {
     type: String,
   },
-  image: {
-    url: String,
-    filename: String,
-  },
+  image: [
+    {
+      url: String,
+      filename: String,
+    },
+  ],
 
   price: {
     type: Number,
@@ -57,6 +59,9 @@ listingSchema.post("findOneAndDelete", async (listing) => {
     console.log(res);
   }
 });
+
+// Define text index on title, location, and country fields
+listingSchema.index({ title: "text", location: "text", country: "text" });
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
