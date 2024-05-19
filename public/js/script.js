@@ -214,3 +214,43 @@ function updateLabel(input) {
     label.innerHTML = `${numFiles} photos selected &nbsp;<i class="fa-solid fa-circle-check" style="color: #0091ff;"></i>`;
   }
 }
+
+// -------------------------------search animation---------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const searchButton = document.querySelector(".search-button");
+  const searchContainer = document.querySelector(".search-container");
+  const searchInput = document.querySelector(".search-input");
+
+  searchButton.addEventListener("click", function (event) {
+    if (!searchContainer.classList.contains("active")) {
+      event.preventDefault(); // Prevent form submission if the input is not expanded
+      // searchButton.classList.add("s-btn");
+      searchContainer.classList.add("active");
+
+      searchInput.focus();
+    }
+  });
+
+  // Optional: close the search field if clicked outside
+  document.addEventListener("click", function (event) {
+    if (
+      !searchContainer.contains(event.target) &&
+      searchContainer.classList.contains("active")
+    ) {
+      searchContainer.classList.remove("active");
+    }
+  });
+});
+
+// ------------------------------------------show filters-----------------------------------------------
+let page = document.querySelector(".pageblur");
+let containerbtn = document.querySelector(".showfilter");
+filterClick = () => {
+  containerbtn.classList.add("filterbtnClick");
+  page.classList.add("containerblur");
+};
+
+closefilter = () => {
+  containerbtn.classList.remove("filterbtnClick");
+  page.classList.remove("containerblur");
+};

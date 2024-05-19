@@ -84,7 +84,7 @@
                                     <h3 class="show-head mb-3">More Photos <i class="fa-regular fa-images"></i></h3>
                                     <div class="more-img-div">
                                         <% for(let i=1; i< listing.image.length; i++){ %>
-                                            <img src="<%= listing.image[i].url %>" alt="" class="more-img mb-3">
+                                            <img src="<%= listing.image[i].url %>" alt="" class="more-img mb-3 me-1">
 
                                             <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
                                                 <form

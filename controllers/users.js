@@ -3,7 +3,7 @@ const Review = require("../models/review");
 const User = require("../models/user");
 
 module.exports.renderSignUpForm = (req, res) => {
-  res.render("users/signup.ejs");
+  res.render("users/login.ejs");
 };
 
 module.exports.signUp = async (req, res) => {

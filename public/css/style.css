@@ -95,6 +95,7 @@ body::-webkit-scrollbar {
   font-size: 18px;
 }
 
+/* -----------------------------search bar--------------------------------- */
 .search-field {
   width: 18rem;
   border-top-left-radius: 20px;
@@ -103,12 +104,29 @@ body::-webkit-scrollbar {
 }
 
 .search-btn {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 50%;
   border: none;
   width: 3rem;
+  height: 3rem;
   background-color: #ff003c;
   color: white;
+  transition: border-radius 0.4s ease-in-out, width 0.4s ease-in-out,
+    height 0.4s ease-in-out;
+}
+
+.search-input {
+  width: 0;
+  transition: width 0.4s ease-in-out, padding 0.4s ease-in-out;
+  opacity: 0;
+}
+
+.search-container.active .search-input {
+  width: 300px;
+  opacity: 1;
+}
+.search-container.active .search-input {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 #searchForm {
@@ -589,12 +607,16 @@ textarea {
   border-radius: 10px;
 }
 
+.filter-div:hover {
+  cursor: pointer;
+}
+
 .form-check-input:hover,
 .form-check-label:hover {
   cursor: pointer !important;
 }
 
-/* meet host */
+/* ------------------------------meet host---------------------------------- */
 .contact-div {
   display: flex;
   justify-content: space-around;
@@ -775,9 +797,15 @@ textarea {
     background-color: #ecebeb;
   }
 
+  .search-btn {
+    border-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
   .hide-explore {
     display: block !important;
-    font-size: 22px !important;
+    font-size: 30px !important;
   }
 
   .nav-link {

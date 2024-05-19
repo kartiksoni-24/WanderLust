@@ -2,16 +2,17 @@
     <nav class="navbar sticky-top navbar-expand">
         <div class="container-fluid navbar-div">
             <a class="navbar-brand hide-title" style="font-family: Aladin;" href="/">WanderLust</a>
-            <a class="nav-link hide-explore" href="/listings">Explore</a>
+            <a class="hide-explore navbar-brand" style="font-family: Aladin;" href="/listings">WanderLust</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <form action="/listings/search" method="get" id="searchFormNav">
-                <input type="text" class="search-field p-2 ps-4" id="searchQuery" name="searchQuery"
+            <form action="/listings/search" method="get" class="search-container" id="searchFormNav">
+                <input type="text" class="search-field p-2 ps-4 search-input" id="searchQuery" name="searchQuery"
                     placeholder="Search by title, location, or country">
-                <button type="submit" class="search-btn p-2 ms-1"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="submit" class="search-btn p-2 ms-1 search-button"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
             <div class="navbar-options hide-options">
@@ -22,8 +23,8 @@
                         <a class="nav-link" href="/listings/new">About Us</a>
 
                         <% if(!currUser) { %>
-                            <a class="nav-link" href="/login">Login</a>
-                            <a class="nav-link" href="/signup">SignUp</a>
+                            <a class="nav-link" href="/login">Login/SignUp</a>
+                            <!-- <a class="nav-link" href="/signup">SignUp</a> -->
                             <% } %>
                                 <% if(currUser){ %>
                                     <a class="nav-link" href="/profile">Profile</a>
@@ -40,13 +41,13 @@
                 <div class="navbar-options-container">
                     <ul class="dropdown-menu mt-5 nav-drop">
                         <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                        <!-- <li><a class="dropdown-item" href="/listings">Explore</a></li> -->
+                        <li><a class="dropdown-item" href="/listings">Explore</a></li>
                         <li><a class="dropdown-item" href="/listings/new">Add New Listing</a></li>
                         <li><a class="dropdown-item" href="#">About us</a></li>
 
                         <% if(!currUser) { %>
-                            <li><a class="dropdown-item" href="/login">Login</a></li>
-                            <li><a class="dropdown-item" href="signup">SignUp</a></li>
+                            <li><a class="dropdown-item" href="/login">Login/SignUp</a></li>
+                            <!-- <li><a class="dropdown-item" href="signup">SignUp</a></li> -->
                             <% } %>
                                 <% if(currUser){ %>
                                     <li><a class="dropdown-item" href="logout">LogOut</a></li>
