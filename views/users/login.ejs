@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WanderLust</title>
 
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,154 +23,158 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-    <div class="container">
+<%- include("../includes/flash.ejs") %>
 
-        <div class="form-box">
-            <a href="/listings" class="static" style="text-decoration: none;">Go Back</a>
-            <h1 class="left">Sign Up</h1><br>
-            <div class="underline"></div>
+    <body>
+        <div class="container">
 
-            <div class="form-one">
+            <div class="form-box">
+                <a href="/listings" class="static" style="text-decoration: none;">Go Back</a>
+                <h1 class="left">Sign Up</h1><br>
+                <div class="underline"></div>
 
-                <form action="/signup" method="post" class="form-one">
+                <div class="form-one">
 
-                    <div class="input-group">
+                    <form action="/signup" method="post" class="form-one">
 
-                        <div class="input-field">
-                            <!-- <i class="fa-regular fa-user"></i> -->
-                            <input name="username" placeholder="Username" type="text" required>
-                        </div>
+                        <div class="input-group">
 
-                        <div class="input-field">
-                            <!-- <i class="fa-solid fa-key"></i> -->
-                            <input placeholder="Password" name="password" type="password" required>
-                        </div>
-
-                        <div class="input-field">
-                            <!-- <i class="fa-solid fa-at"></i> -->
-                            <input placeholder="Email" type="email" name="email" required>
-                        </div>
-
-
-                        <div id="btn">
-                            <button class="right"> SignUp </button>
-
-                            <br><br>
-
-                            <div class="hr">
-                                <hr>
-                                <h4 style="text-align: center; position:sticky;">&nbsp; <em> Or </em> &nbsp;
-                                </h4>
-                                <hr>
+                            <div class="input-field">
+                                <!-- <i class="fa-regular fa-user"></i> -->
+                                <input name="username" placeholder="Username" type="text" required>
                             </div>
 
-                            <a href="/auth/google" class="gobtn">
-                                <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                                    alt="#" width="50px">
-                                <b>Continue with Google</b> </a>
-
-                        </div>
-                        <p style=" color: white; text-shadow: 2px 2px 5px black;">Alredy
-                            have an account? <a style="text-shadow: 2px 2px 5px black; color: white;" href="#"
-                                class="login"> &nbsp;
-                                Login</a></p>
-                    </div>
-
-                </form>
-
-            </div>
-
-
-            <div class="form-two hide">
-
-                <form action="/login" method="post" class="form-two">
-
-                    <div class="input-group">
-
-                        <div class="input-field">
-                            <!-- <i class="fa-solid fa-user"></i> -->
-                            <input name="username" placeholder="Username" required type="text">
-                        </div>
-
-                        <div class="input-field">
-                            <!-- <i class="fa-solid fa-key"></i> -->
-                            <input placeholder="Password" required type="password" name="password">
-                        </div>
-
-                        <div id="btn">
-                            <button class="right">Log in</button>
-                            <br><br>
-                            <div class="hr">
-                                <hr>
-                                <h4 style="text-align: center; position:sticky;">&nbsp; <em> Or </em> &nbsp;</h4>
-                                <hr>
+                            <div class="input-field">
+                                <!-- <i class="fa-solid fa-key"></i> -->
+                                <input placeholder="Password" name="password" type="password" required>
                             </div>
-                            <a href="/auth/google" style="margin-top:.75rem ;" class="gobtn">
-                                <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                                    alt="#" width="50px">
-                                <b>Continue with Google</b> </a>
 
-                            <p style="margin-top: 1.5rem; color: white; text-shadow: 2px 2px 5px black;">Don't have an
-                                account? <a href="#" class="signup"
-                                    style="text-shadow: 2px 2px 5px black; color: white;">
-                                    &nbsp;
-                                    SignUp</a></p>
+                            <div class="input-field">
+                                <!-- <i class="fa-solid fa-at"></i> -->
+                                <input placeholder="Email" type="email" name="email" required>
+                            </div>
+
+
+                            <div id="btn">
+                                <button class="right"> SignUp </button>
+
+                                <br><br>
+
+                                <div class="hr">
+                                    <hr>
+                                    <h4 style="text-align: center; position:sticky;">&nbsp; <em> Or </em> &nbsp;
+                                    </h4>
+                                    <hr>
+                                </div>
+
+                                <a href="/auth/google" class="gobtn">
+                                    <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                                        alt="#" width="50px">
+                                    <b>Continue with Google</b> </a>
+
+                            </div>
+                            <p style=" color: white; text-shadow: 2px 2px 5px black;">Alredy
+                                have an account? <a style="text-shadow: 2px 2px 5px black; color: white;" href="#"
+                                    class="login"> &nbsp;
+                                    Login</a></p>
                         </div>
 
+                    </form>
 
-                    </div>
+                </div>
 
-                </form>
+
+                <div class="form-two hide">
+
+                    <form action="/login" method="post" class="form-two">
+
+                        <div class="input-group">
+
+                            <div class="input-field">
+                                <!-- <i class="fa-solid fa-user"></i> -->
+                                <input name="username" placeholder="Username" required type="text">
+                            </div>
+
+                            <div class="input-field">
+                                <!-- <i class="fa-solid fa-key"></i> -->
+                                <input placeholder="Password" required type="password" name="password">
+                            </div>
+
+                            <div id="btn">
+                                <button class="right">Log in</button>
+                                <br><br>
+                                <div class="hr">
+                                    <hr>
+                                    <h4 style="text-align: center; position:sticky;">&nbsp; <em> Or </em> &nbsp;</h4>
+                                    <hr>
+                                </div>
+                                <a href="/auth/google" style="margin-top:.75rem ;" class="gobtn">
+                                    <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                                        alt="#" width="50px">
+                                    <b>Continue with Google</b> </a>
+
+                                <p style="margin-top: 1.5rem; color: white; text-shadow: 2px 2px 5px black;">Don't have
+                                    an
+                                    account? <a href="#" class="signup"
+                                        style="text-shadow: 2px 2px 5px black; color: white;">
+                                        &nbsp;
+                                        SignUp</a></p>
+                            </div>
+
+
+                        </div>
+
+                    </form>
+
+                </div>
+
 
             </div>
-
-
         </div>
-    </div>
 
-    <script>
-        let login = document.querySelector(".login"); // link of login page line no. 43
-        let hide = document.querySelector(".form-one"); //line no.22 sing in form
-        let unhide = document.querySelector(".form-two");//line no. 56 login page
-        let h1 = document.querySelector("h1"); //line no. 19
-        let form_box = document.querySelector(".form-box");// line no.17 contaion form one and two
-        let i = document.querySelector(".signup");//line no. 18 arrow for go back on sign up page
+        <script>
+            let login = document.querySelector(".login"); // link of login page line no. 43
+            let hide = document.querySelector(".form-one"); //line no.22 sing in form
+            let unhide = document.querySelector(".form-two");//line no. 56 login page
+            let h1 = document.querySelector("h1"); //line no. 19
+            let form_box = document.querySelector(".form-box");// line no.17 contaion form one and two
+            let i = document.querySelector(".signup");//line no. 18 arrow for go back on sign up page
 
-        login.addEventListener("click", () => {
-            form_box.classList.add("animate");
-
-            setTimeout(() => {
-                h1.innerText = "Log in";
-                unhide.classList.remove("hide");
-                hide.classList.add("hide");
-                i.classList.remove("hide");
+            login.addEventListener("click", () => {
+                form_box.classList.add("animate");
 
                 setTimeout(() => {
-                    form_box.classList.remove("animate");
+                    h1.innerText = "Log in";
+                    unhide.classList.remove("hide");
+                    hide.classList.add("hide");
+                    i.classList.remove("hide");
+
+                    setTimeout(() => {
+                        form_box.classList.remove("animate");
+                    }, 500);
+
                 }, 500);
+            });
 
-            }, 500);
-        });
-
-        i.addEventListener("click", () => {
-            form_box.classList.add("animate");
-
-            setTimeout(() => {
-                h1.innerText = "Sign Up";
-                unhide.classList.add("hide");
-                hide.classList.remove("hide");
-                i.classList.add("hide");
+            i.addEventListener("click", () => {
+                form_box.classList.add("animate");
 
                 setTimeout(() => {
-                    form_box.classList.remove("animate");
-                }, 500);
+                    h1.innerText = "Sign Up";
+                    unhide.classList.add("hide");
+                    hide.classList.remove("hide");
+                    i.classList.add("hide");
 
-            }, 500);
-        });
-    </script>
-</body>
+                    setTimeout(() => {
+                        form_box.classList.remove("animate");
+                    }, 500);
+
+                }, 500);
+            });
+        </script>
+    </body>
 
 </html>

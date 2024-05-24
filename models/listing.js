@@ -39,6 +39,7 @@ const listingSchema = new Schema({
   category: {
     type: String,
     enum: [
+      "Select Category",
       "Room",
       "House",
       "Home",

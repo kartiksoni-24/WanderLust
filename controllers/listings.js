@@ -186,7 +186,7 @@ module.exports.search = async (req, res, next) => {
     // console.log(query);
     // Check if query is null or undefined
     if (!query) {
-      req.flash("error", "Something went wrong!");
+      req.flash("error", "No match found!!!");
       res.redirect("/listings");
     }
 
@@ -196,6 +196,7 @@ module.exports.search = async (req, res, next) => {
       res.redirect("/listings");
     }
 
+    res.locals.success = `${listings.length} Listings match with your query "${query}"`;
     res.render("listings/index.ejs", { listings });
   } catch (err) {
     next(err);
@@ -229,10 +230,94 @@ module.exports.sendEmail = async (req, res) => {
   });
 
   let mailOptions = {
-    from: "aaduj78@gmail.com",
+    from: "",
     to: listing.owner.email,
     subject: "For gain more information about listing",
-    text: `Hello ${listing.owner.username},This message is reach you because "${currUser.username}" want more details about your listing. The question he/she send for you is : "${req.body.message}". And you can contact him/her using following mail: ${currUser.email}.`,
+    // text: `Hello ${listing.owner.username},This message is reach you because "${currUser.username}" want more details about your listing. The question he/she send for you is : "${req.body.message}". And you can contact him/her using following mail: ${currUser.email}`,
+
+    html: `
+     <html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Aladin', cursive, Arial, sans-serif;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #9421ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .content p {
+            margin: 15px 0;
+        }
+        .content b {
+            color: #ab67eb;
+        }
+        .footer {
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100%;
+            }
+            .content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>WanderLust Services</h1>
+        </div>
+        <div class="content">
+            <p>Dear <b>${listing.owner.username}</b>,</p>
+            <p>Thank you for using our website. We've some good news for you!</p>
+            <p>A user with the username <b>${currUser.username}</b> shows interest in your listing and sent this message for you:</p>
+            <p><i>${req.body.message}</i></p>
+            <p>You can contact them using this email:</p>
+            <p><a href="mailto:${currUser.email}" style="color: #ab67eb; text-decoration: none;">${currUser.email}</a></p>
+        </div>
+        <div class="footer">
+            <p>Best Regards,</p>
+            <p>Team WanderLust</p>
+        </div>
+    </div>
+</body>
+</html>`,
   };
 
   transporter.sendMail(mailOptions, (err, data) => {
