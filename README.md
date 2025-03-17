@@ -112,7 +112,7 @@ Open [http://localhost:8080/listings](http://localhost:8080/listings) in your we
 ## 👨‍💻 Author
 **Kartik Soni**  
 📧 Email: kartik.soni.9301@gmail.com  
-🔗 LinkedIn: [Kartik Soni](https://www.linkedin.com/in/kartiksoni-24/)
+🔗 LinkedIn: [Kartik Soni](https://www.linkedin.com/in/kartik-soni-63268b290/)
 
 ---
 
