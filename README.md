@@ -19,7 +19,7 @@
 - ☁️ **Cloudinary**: Cloud-based image and video management solution.
 
 ### 🗺️ Maps
-- 📍 **Mapbox**: Platform for custom maps and location-based experiences.
+- 📍 **Bing Map**: Platform for custom maps and location-based experiences.
 
 ### 🎨 Frontend
 - 📜 **EJS**: Embedded JavaScript templates for dynamic content rendering.
